@@ -33,13 +33,6 @@
                     </a>
                 </li>
             </ul>
-
-            <form class="d-flex" role="search">
-                <input class="form-control rounded-pill me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary rounded-pill" type="submit">
-                    <i class="bi bi-search"></i> Search
-                </button>
-            </form>
         </div>
     </div>
 </nav>

@@ -21,6 +21,12 @@ class UserController extends Controller
         return view('users', ['data' => $usersFromDB]);
     }
 
+    public function test()
+    {
+
+        return view('users.test');
+    }
+
 
 
 
@@ -97,7 +103,7 @@ class UserController extends Controller
         // $employee->save();
 
         // 3- redirection to index
-        return to_route('index');
+        return to_route('index')->with('success', 'An employee has been added');
     }
 
 
@@ -141,7 +147,7 @@ class UserController extends Controller
         // );
 
         // 3- redirection to index
-        return to_route('index');
+        return to_route('index')->with('success', 'An employee has been Updated');
     }
 
 
@@ -158,6 +164,6 @@ class UserController extends Controller
         $user->delete();
 
         // 2- redirection to index
-        return to_route('index');
+        return to_route('index')->with('danger', 'An employee has been Deleted');
     }
 }
