@@ -16,30 +16,44 @@
 </head>
 <body>
 
-    <div class="">
-<nav class="navbar navbar-expand-lg bg-white">
-    <div class="container-fluid">
-        <a class="navbar-brand fw-bold text-primary" href="#">MyApp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+<nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary fs-4" href="#">
+            <i class="bi bi-stack"></i> Management
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active fw-semibold" aria-current="page" href="{{route('index')}}">Home</a>
+                    <a class="nav-link fw-semibold {{ Request::routeIs('index') ? 'active text-primary' : '' }}" href="{{ route('index') }}">
+                        Home
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link fw-semibold {{ Request::routeIs('v') ? 'active text-primary' : '' }}" href="{{ route('index') }}">
+                        Admins
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold {{ Request::routeIs('b') ? 'active text-primary' : '' }}" href="{{ route('index') }}">
+                        Logout
+                    </a>
                 </li>
             </ul>
+
             <form class="d-flex" role="search">
-                <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-primary rounded-pill" type="submit">Search</button>
+                <input class="form-control rounded-pill me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary rounded-pill" type="submit">
+                    <i class="bi bi-search"></i> Search
+                </button>
             </form>
         </div>
     </div>
 </nav>
-</div>
+
 
 @yield('content')
 
