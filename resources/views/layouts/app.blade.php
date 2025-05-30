@@ -18,7 +18,7 @@
 
 <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
     <div class="container">
-        <a class="navbar-brand fw-bold text-primary fs-4" href="#">
+        <a class="navbar-brand fw-bold text-primary fs-4" href="{{route('index')}}">
             <i class="bi bi-stack"></i> Management
         </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -30,16 +30,6 @@
                 <li class="nav-item">
                     <a class="nav-link fw-semibold {{ Request::routeIs('index') ? 'active text-primary' : '' }}" href="{{ route('index') }}">
                         Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-semibold {{ Request::routeIs('v') ? 'active text-primary' : '' }}" href="{{ route('index') }}">
-                        Admins
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-semibold {{ Request::routeIs('b') ? 'active text-primary' : '' }}" href="{{ route('index') }}">
-                        Logout
                     </a>
                 </li>
             </ul>
