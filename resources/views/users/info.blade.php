@@ -64,7 +64,7 @@
                     <div class="d-flex align-items-center mb-4">
                         <div class="flex-shrink-0">
                             <span class="avatar rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center"
-                                  style="width:60px; height:60px; font-size:2rem;">
+                                style="width:60px; height:60px; font-size:2rem;">
                                 {{ strtoupper(substr($info->first_name, 0, 1)) }}{{ strtoupper(substr($info->last_name, 0, 1)) }}
                             </span>
                         </div>
