@@ -79,153 +79,88 @@
 
 
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-11">
-            <div class="card shadow-lg border-0 rounded-4 p-4">
-                <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
-                    <h2 class="mb-0 fw-bold text-dark">👥 Employee Management</h2>
-                    <a href="{{ route('users.create') }}" class="btn btn-success btn-lg rounded-3 px-4">
-                        + Add User
-                    </a>
-                </div>
 
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle w-100">
-                        <thead class="table-light">
-                            <tr>
-                                <th style="width: 10%;">#</th>
-                                <th style="width: 30%;">First Name</th>
-                                <th style="width: 30%;">Last Name</th>
-                                <th style="width: 30%;">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $data)
-                            <tr>
-                                <td class="fw-semibold text-muted">{{ $data->id }}</td>
-                                <td>{{ $data->first_name }}</td>
-                                <td>{{ $data->last_name }}</td>
-                                <td>
-                                    <a href="{{ route('user.info', $data->id) }}" class="btn btn-outline-info btn-sm rounded-pill me-1">
-                                        <i class="bi bi-eye"></i> View
-                                    </a>
-                                    <a href="{{ route('users.edit', $data->id) }}" class="btn btn-outline-primary btn-sm rounded-pill me-1">
-                                        <i class="bi bi-pencil-square"></i> Edit
-                                    </a>
-                                    <form method="POST" action="{{ route('users.destroy', $data->id) }}" style="display:inline">
+    <div class="container mx-auto px-12 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8 mt-2">User Listing</h1>
+
+        <!-- Search and Add User (Static) -->
+        <div class="flex flex-col-reverse md:flex-row justify-between items-center mb-3 mt-5">
+            <div class="w-full md:w-1/2  md:mb-0">
+                <input type="text" placeholder="Search users..." class="w-full px-4 py-2 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <a href="{{ route('users.create') }}">
+            <button class="bg-blue-500 text-white px-4 py-2 my-3 rounded-md hover:bg-blue-600 transition duration-300">
+                Add New User
+            </button>
+            </a>
+        </div>
+
+        <!-- User Table -->
+        <div class="overflow-x-auto bg-white rounded-lg shadow">
+            <table class="w-full table-auto">
+                <thead>
+                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left">ID</th>
+                        <th class="py-3 px-6 text-left">Name</th>
+                        <th class="py-3 px-6 text-left">Last Name</th>
+                        <th class="py-3 px-6 text-left">Email</th>
+                        <th class="py-3 px-6 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm">
+                    @foreach ($data as $data)
+                    <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left"> {{ $data->id }} </td>
+                        <td class="py-3 px-6 text-left"> {{ $data->first_name }} </td>
+                        <td class="py-3 px-6 text-left"> {{ $data->last_name }} </td>
+                        <td class="py-3 px-6 text-left"> {{ $data->email }} </td>
+                        <td class="py-3 px-6 text-center">
+                            <div class="flex item-center justify-center">
+                                <a href="{{ route('users.edit', $data->id) }}">  <button class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                    </svg>
+                                </button> </a>
+                                <form method="POST" action="{{ route('users.destroy', $data->id) }}" style="display:inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill" onclick="return confirm('Are you sure you want to delete this user?');">
-                                            <i class="bi bi-trash"></i> Delete
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                <button type="submit" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
+        <!-- Static Pagination -->
+        <div class="flex justify-between items-center mt-6">
+            <div>
+                <span class="text-sm text-gray-700">
+                    Showing 1 to 5 of 5 entries
+                </span>
+            </div>
+            <div class="flex space-x-2">
+                <a href="https://abhirajk.vercel.app/" target="blank">
+                <button class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 opacity-50">
+                    Previous
+                </button>
+                </a>
+                            <a href="https://abhirajk.vercel.app/" target="blank">
+
+                <button class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 opacity-50">
+                    Next
+                </button>
+                            </a>
             </div>
         </div>
     </div>
-</div>
 
-<div class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
-  <div class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl" aria-hidden="true">
-    <div class="mx-auto aspect-1155/678 w-288.75 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-  </div>
-  <div class="mx-auto max-w-4xl text-center">
-    <h2 class="text-base/7 font-semibold text-indigo-600">Pricing</h2>
-    <p class="mt-2 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-6xl">Choose the right plan for you</p>
-  </div>
-  <p class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer loyalty, and driving sales.</p>
-  <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
-    <div class="rounded-3xl rounded-t-3xl bg-white/60 p-8 ring-1 ring-gray-900/10 sm:mx-8 sm:rounded-b-none sm:p-10 lg:mx-0 lg:rounded-tr-none lg:rounded-bl-3xl">
-      <h3 id="tier-hobby" class="text-base/7 font-semibold text-indigo-600">Hobby</h3>
-      <p class="mt-4 flex items-baseline gap-x-2">
-        <span class="text-5xl font-semibold tracking-tight text-gray-900">$29</span>
-        <span class="text-base text-gray-500">/month</span>
-      </p>
-      <p class="mt-6 text-base/7 text-gray-600">The perfect plan if you&#039;re just getting started with our product.</p>
-      <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 sm:mt-10">
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          25 products
-        </li>
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          Up to 10,000 subscribers
-        </li>
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          Advanced analytics
-        </li>
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          24-hour support response time
-        </li>
-      </ul>
-      <a href="#" aria-describedby="tier-hobby" class="mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold text-indigo-600 ring-1 ring-indigo-200 ring-inset hover:ring-indigo-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10">Get started today</a>
-    </div>
-    <div class="relative rounded-3xl bg-gray-900 p-8 shadow-2xl ring-1 ring-gray-900/10 sm:p-10">
-      <h3 id="tier-enterprise" class="text-base/7 font-semibold text-indigo-400">Enterprise</h3>
-      <p class="mt-4 flex items-baseline gap-x-2">
-        <span class="text-5xl font-semibold tracking-tight text-white">$99</span>
-        <span class="text-base text-gray-400">/month</span>
-      </p>
-      <p class="mt-6 text-base/7 text-gray-300">Dedicated support and infrastructure for your company.</p>
-      <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-300 sm:mt-10">
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          Unlimited products
-        </li>
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          Unlimited subscribers
-        </li>
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          Advanced analytics
-        </li>
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          Dedicated support representative
-        </li>
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          Marketing automations
-        </li>
-        <li class="flex gap-x-3">
-          <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
-          </svg>
-          Custom integrations
-        </li>
-      </ul>
-      <a href="#" aria-describedby="tier-enterprise" class="mt-8 block rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 sm:mt-10">Get started today</a>
-    </div>
-  </div>
-</div>
 
 @endsection
 
