@@ -50,36 +50,52 @@
     }
 </style>
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
-    <div class="custom-card" style="max-width: 700px; width: 100%;">
-        <h2 class="text-center mb-4 text-primary fw-bold">
-            <i class="bi bi-pencil-fill title-icon"></i>
-            Update User Info
-        </h2>
+<div class="mx-14 mt-10 border-2 border-blue-400 rounded-lg">
+    <div class="mt-10 text-center font-bold">Employees</div>
+    <div class="mt-3 text-center text-4xl font-bold">Update User Info</div>
+
+    <div class="p-8">
         <form method="POST" action="{{ route('users.update', $info->id) }}">
             @csrf
             @method('PUT')
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" name="firstName" class="form-control" id="firstName" value="{{ $info->first_name }}" required>
+
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="w-full">
+                    <input
+                        type="text"
+                        name="firstName"
+                        class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+                        value="{{ $info->first_name }}" required/>
                 </div>
-                <div class="col-md-6 mt-3 mt-md-0">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" name="lastName" class="form-control" id="lastName" value="{{ $info->last_name }}" required>
+
+                <div class="w-full">
+                    <input
+                        type="text"
+                        name="lastName"
+                        class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+                        value="{{ $info->last_name }}" required/>
+                </div>
+
+                <div class="w-full">
+                    <input
+                        type="email"
+                        name="email"
+                        class="mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+                        value="{{ $info->email }}" required/>
                 </div>
             </div>
 
-            <div class="mb-4">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" name="email" class="form-control" id="email" value="{{ $info->email }}" required>
+            <div class="text-center mt-10">
+                <button
+                    type="submit"
+                    class="cursor-pointer rounded-lg bg-blue-700 px-8 py-5 text-sm font-semibold text-white">
+                    Save Changes
+                </button>
             </div>
-
-            <button type="submit" class="btn btn-primary w-100">
-                <i class="bi bi-send-fill me-2"></i> Save Changes
-            </button>
         </form>
     </div>
 </div>
 
 @endsection
+
+
