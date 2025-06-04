@@ -11,8 +11,6 @@ class UserController extends Controller
 
 
 
-
-
     public function index()
     {
         // select * from users
@@ -20,14 +18,6 @@ class UserController extends Controller
 
         return view('users', ['data' => $usersFromDB]);
     }
-
-    public function test()
-    {
-
-        return view('users.test');
-    }
-
-
 
 
 
@@ -61,15 +51,10 @@ class UserController extends Controller
 
 
 
-
-
     public function create()
     {
         return view('users.create');
     }
-
-
-
 
 
 
@@ -110,15 +95,11 @@ class UserController extends Controller
 
 
 
-
-
-
     public function edit($userID)
     {
         $user = Employee::find($userID);
         return view('users.edit', ['info' => $user]);
     }
-
 
 
 
