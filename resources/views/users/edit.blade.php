@@ -50,7 +50,7 @@
     }
 </style>
 
-<div class="mx-14 mt-10 border-2 border-blue-400 rounded-lg">
+<div class="mx-14 mt-32 border-2 border-blue-400 rounded-lg">
     <div class="mt-10 text-center font-bold">Employees</div>
     <div class="mt-3 text-center text-4xl font-bold">Update User Info</div>
 

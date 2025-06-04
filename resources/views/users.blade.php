@@ -52,7 +52,7 @@
     }
 </style>
 
-@if (session('success'))
+{{-- @if (session('success'))
     <div class="position-fixed bottom-0 end-0 p-3"  style="z-index: 9999" >
         <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
@@ -75,13 +75,11 @@
             </div>
         </div>
     </div>
-@endif
-
-
+@endif --}}
 
 
     <div class="container mx-auto px-12 py-8">
-        <h1 class="text-3xl font-bold text-center mb-8 mt-2">User Listing</h1>
+        <h1 class="text-3xl font-bold text-center mb-8 mt-6">Employees Listing</h1>
 
         <!-- Search and Add User (Static) -->
         <div class="flex flex-col-reverse md:flex-row justify-between items-center mb-3 mt-5">
@@ -136,28 +134,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-
-        <!-- Static Pagination -->
-        <div class="flex justify-between items-center mt-6">
-            <div>
-                <span class="text-sm text-gray-700">
-                    Showing 1 to 5 of 5 entries
-                </span>
-            </div>
-            <div class="flex space-x-2">
-                <a href="https://abhirajk.vercel.app/" target="blank">
-                <button class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 opacity-50">
-                    Previous
-                </button>
-                </a>
-                            <a href="https://abhirajk.vercel.app/" target="blank">
-
-                <button class="px-3 py-1 rounded-md bg-gray-200 text-gray-700 opacity-50">
-                    Next
-                </button>
-                            </a>
-            </div>
         </div>
     </div>
 
