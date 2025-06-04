@@ -12,6 +12,9 @@ This is a simple Laravel 12 project that demonstrates **CRUD operations** (Creat
 - Delete employee
 - Clean UI with Tailwind CSS 
 
+![Screenshot](crudPage.jpg)
+
+
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
