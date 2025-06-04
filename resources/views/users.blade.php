@@ -79,7 +79,7 @@
 
 
     <div class="container mx-auto px-12 py-8">
-        <h1 class="text-3xl font-bold text-center mb-8 mt-6">Employees Listing</h1>
+        <h1 class="text-3xl text-gray-800 font-bold text-center mb-8 mt-6">Employees Listing</h1>
 
         <!-- Search and Add User (Static) -->
         <div class="flex flex-col-reverse md:flex-row justify-between items-center mb-3 mt-5">
