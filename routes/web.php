@@ -17,3 +17,7 @@ Route::put('/users/{users}' , [UserController::class , 'update'] )->name('users.
 Route::delete('/users/{user}', [UserController::class , 'destroy'] )->name('users.destroy');
 
 Route::get('/info/{user}', [UserController::class , 'show'] )->name('user.info');
+
+Route::get('/admin', function() {
+    return view('admin.admin');
+})->name('admin');
