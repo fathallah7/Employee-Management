@@ -6,76 +6,41 @@
 
 @section('content')
 
-<style>
-    .table th, .table td {
-        vertical-align: middle;
-        text-align: center;
-    }
 
-    .table thead th {
-        background-color: #f8f9fa;
-        font-weight: 600;
-    }
-
-    .table tbody tr:hover {
-        background-color: #f1f1f1;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-sm {
-        min-width: 70px;
-    }
-
-    .btn i {
-        margin-right: 5px;
-    }
-
-    .card {
-        background: #fff;
-        border-radius: 16px;
-        border: none;
-    }
-
-    .btn-outline-info:hover {
-        background-color: #0dcaf0;
-        color: white;
-    }
-
-    .btn-outline-primary:hover {
-        background-color: #0d6efd;
-        color: white;
-    }
-
-    .btn-outline-danger:hover {
-        background-color: #dc3545;
-        color: white;
-    }
-</style>
-
-{{-- @if (session('success'))
-    <div class="position-fixed bottom-0 end-0 p-3"  style="z-index: 9999" >
-        <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    {{ session('success') }}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
+@if (session('success'))
+    <div id="successAlert"
+        class="fixed bottom-5 right-5 bg-green-100 border border-green-500 text-green-700 px-5 py-3 rounded shadow-lg z-50 flex items-start gap-3">
+        <svg class="w-6 h-6 text-green-500 mt-1" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <div class="flex-1">
+            <strong class="block mb-1">Success</strong>
+            <p>{{ session('success') }}</p>
         </div>
+        <button onclick="document.getElementById('successAlert').remove()"
+            class="ml-4 text-green-700 hover:text-green-900 text-lg">&times;</button>
     </div>
 @endif
+
 @if (session('danger'))
-    <div class="position-fixed bottom-0 end-0 p-3"  style="z-index: 9999" >
-        <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    {{ session('danger') }}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
+    <div id="dangerAlert"
+        class="fixed bottom-5 right-5 bg-red-100 border border-red-500 text-red-700 px-5 py-3 rounded shadow-lg z-50 flex items-start gap-3 mt-3">
+        <svg class="w-6 h-6 text-red-500 mt-1" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div class="flex-1">
+            <strong class="block mb-1">Deleted</strong>
+            <p>{{ session('danger') }}</p>
         </div>
+        <button onclick="document.getElementById('dangerAlert').remove()"
+            class="ml-4 text-red-700 hover:text-red-900 text-lg">&times;</button>
     </div>
-@endif --}}
+@endif
+
+
 
 
     <div class="container mx-auto px-12 py-8">
@@ -136,6 +101,19 @@
             </table>
         </div>
     </div>
+
+
+
+    <script>
+    setTimeout(() => {
+        const successAlert = document.getElementById('successAlert');
+        const dangerAlert = document.getElementById('dangerAlert');
+
+        if (successAlert) successAlert.remove();
+        if (dangerAlert) dangerAlert.remove();
+    }, 5000);
+</script>
+
 
 
 @endsection

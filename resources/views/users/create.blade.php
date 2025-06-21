@@ -6,50 +6,6 @@
 
 @section('content')
 
-<style>
-    .custom-card {
-        background-color: #fff;
-        border-radius: 1.25rem;
-        padding: 3rem;
-        box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        transition: all 0.3s ease-in-out;
-    }
-
-    .custom-card:hover {
-        transform: scale(1.01);
-        box-shadow: 0 0 30px rgba(0,0,0,0.08);
-    }
-
-    .form-control {
-        border-radius: 0.75rem;
-        padding: 0.9rem 1rem;
-        font-size: 1rem;
-    }
-
-    .form-label {
-        font-weight: 600;
-        color: #333;
-    }
-
-    .btn-primary {
-        font-size: 1.1rem;
-        border-radius: 0.75rem;
-        padding: 0.75rem;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .btn-primary:hover {
-        background-color: #0b5ed7;
-        box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
-    }
-
-    .title-icon {
-        font-size: 2rem;
-        vertical-align: middle;
-        margin-right: 0.5rem;
-    }
-</style>
-
 
 <div class="mx-14 mt-32 border-2 border-blue-400 rounded-lg">
     <div class="mt-10 text-center font-bold">Employees</div>
