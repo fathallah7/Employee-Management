@@ -6,6 +6,7 @@
     <title>@yield('title')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         body {
             background: #f8fafc;
@@ -86,7 +87,7 @@
 
     </div>
 
-<footer class="bg-gray-800 text-white py-4 px-3 mt-16 b-0">
+<footer class="bg-gray-800 text-white py-4 px-3 b-0">
     <div class="container mx-auto flex flex-wrap items-center justify-between">
         <div class="w-full md:w-1/2 md:text-center md:mb-0 mb-8">
             <p class="text-xs text-gray-400 md:text-sm">Copyright 2020 &copy; All Rights Reserved</p>
