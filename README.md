@@ -4,13 +4,7 @@
 
 This is a simple Laravel 12 project that demonstrates **CRUD operations** (Create, Read, Update, Delete) for managing employee data.
 
-## 📌 Features
 
-- Add new employee
-- View list of employees
-- Update employee information
-- Delete employee
-- Clean UI with Tailwind CSS 
 
 ![Screenshot](public/crudPage.jpg)
 
