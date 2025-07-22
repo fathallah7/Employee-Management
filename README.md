@@ -8,11 +8,3 @@ This is a simple Laravel 12 project that demonstrates **CRUD operations** (Creat
 
 ![Screenshot](public/crudPage.jpg)
 
-
-## 🚀 Getting Started
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/fathallah7/Employee-Management.git
-cd employee-crud
